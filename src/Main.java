@@ -74,7 +74,7 @@ public class Main {
                      movieCollection.printCollection();
                      String title = input.nextLine();
 
-                     movieCollection.changeMovie(title);
+                     //movieCollection.changeMovie(title);
 
 
                 } else if (navigator == 3) {
