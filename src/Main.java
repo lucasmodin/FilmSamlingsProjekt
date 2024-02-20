@@ -34,7 +34,8 @@ public class Main {
             int lengthInMinutes = input.nextInt();
 
             System.out.print("Genre: ");
-            String genre = input.next();
+            input.nextLine(); //endnu dummy scanner for at fjerne scanner bug.
+            String genre = input.nextLine();
 
             //Når alt er indtastet, vil inputtet blive tilføjet til movieCollection klassen i addMovie metoden.
             movieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
