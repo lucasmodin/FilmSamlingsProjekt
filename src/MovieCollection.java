@@ -1,25 +1,25 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+
+
 public class MovieCollection {
-    //opretter en Movie attribute array
-    private Movie[] movieList;
+    private ArrayList<Movie> movieList;
+
 private int count;
 
-//Constructor der tager parameteren size
-    public MovieCollection(int size){
-        this.movieList = new Movie[size];
+
+    public MovieCollection(){
+
+        this.movieList = new ArrayList<>();
         this.count = 0;
 
     }
 
-
-    //metode til at tilføje film. Hvis count er større end længden, får brugeren et output der siger at kollektionen er fuld.
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre, int rating){
-        if (count < movieList.length) {
-            movieList[count++] = new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating);
-        } else {
-            System.out.println("Movie collection is full. Cannot add more movies.");
-        }
+            movieList.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating));
+            count++;
+
     }
+
     //metode til at printe kollektionen. Hvis der er en film, så printer den alle attributterne.
     public void printCollection() {
         for (Movie movie : movieList) {
@@ -29,5 +29,31 @@ private int count;
         }
 
     }
+    public void removeMovie(String title){
+        for (Movie movie : movieList){
+            if (movie.getTitle().equals(title)) {
+                movieList.remove(movie);
+                count--;
+                return; //return statement for at komme ud af metoden når titlen er fundet.
+            } else {
+                System.out.println("Movie with title " + title + " was not found in the collection" );
+            }
+        }
 
+    }
+
+    public void changeMovie (String title, String newTitle, String newDirector, int newYearCreated, boolean newIsinColor, int newLengthInMinutes, String newGenre, int newRating) {
+        for (Movie movie : movieList){
+            if (movie.getTitle().equals(title)) {
+                movie.setTitle(newTitle);
+                movie.setDirector(newDirector);
+                movie.setYearCreated(newYearCreated);
+                movie.setIsinColor(newIsinColor);
+                movie.setGenre(newGenre);
+                movie.setRating(newRating);
+                return;
+            }
+        }
+        System.out.println("Error! no movie by that title found.");
+    }
 }

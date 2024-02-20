@@ -46,8 +46,29 @@ public class Movie {
         return rating;
     }
 
+    public void setTitle(String title) {
+    this.title = title;
+    }
+    public void setDirector(String director) {
+    this.director = director;
+    }
+    public void setYearCreated(int yearCreated) {
+    this.yearCreated = yearCreated;
+    }
+    public void setIsinColor(boolean isInColor) {
+        this.isInColor = isInColor;
+    }
+    public void setGenre(String genre) {
+        this.genre = genre;
+
+    }
+    public void setRating(int rating) {
+        this.rating = rating;
+
+    }
+
     public String toString() {
-        return "Title: " + getTitle() +
+        return "Title: " + title +
                 ", Director: " + director +
                 ", Year: " + yearCreated +
                 ", Color: " + (isInColor ? "Yes" : "No") +
