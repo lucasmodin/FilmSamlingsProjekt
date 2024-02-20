@@ -24,7 +24,7 @@ public class Main {
             System.out.print("Year Created: ");
             int yearCreated = input.nextInt();
 
-            input.nextLine(); //indsat igen for at fjerne scanner bug.
+
 
             System.out.print("Is in Color (true/false): ");
             boolean isInColor = input.nextBoolean();
@@ -37,8 +37,13 @@ public class Main {
             input.nextLine(); //endnu dummy scanner for at fjerne scanner bug.
             String genre = input.nextLine();
 
+
+            //Tilføjet rating for at undgå scanner bug
+            System.out.println("Enter the rating between 1 and 10: ");
+            int rating = input.nextInt();
+
             //Når alt er indtastet, vil inputtet blive tilføjet til movieCollection klassen i addMovie metoden.
-            movieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+            movieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating);
         }
         //metode til at printe kollektionen, når loopet er kørt færdigt.
         movieCollection.printCollection();

@@ -6,15 +6,17 @@ public class Movie {
     private boolean isInColor;
     private int lengthInMinutes;
     private String genre = "";
+    private int rating;
 
     public Movie(String title, String director, int yearCreated,
-                 boolean isInColor, int lengthInMinutes, String genre) {
+                 boolean isInColor, int lengthInMinutes, String genre, int rating) {
         this.title = title;
         this.director = director;
         this.yearCreated = yearCreated;
         this.isInColor = isInColor;
         this.lengthInMinutes = lengthInMinutes;
         this.genre = genre;
+        this.rating = rating;
     }
 
     public String getTitle() {
@@ -40,6 +42,9 @@ public class Movie {
     public String getGenre() {
         return genre;
     }
+    public int getRating(){
+        return rating;
+    }
 
     public String toString() {
         return "Title: " + getTitle() +
@@ -47,7 +52,8 @@ public class Movie {
                 ", Year: " + yearCreated +
                 ", Color: " + (isInColor ? "Yes" : "No") +
                 ", Length: " + lengthInMinutes + " minutes" +
-                ", Genre: " + genre;
+                ", Genre: " + genre +
+                ", Rating " + rating;
     }
 
 }

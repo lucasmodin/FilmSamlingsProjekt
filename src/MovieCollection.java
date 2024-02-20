@@ -13,9 +13,9 @@ private int count;
 
 
     //metode til at tilføje film. Hvis count er større end længden, får brugeren et output der siger at kollektionen er fuld.
-    public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre){
+    public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre, int rating){
         if (count < movieList.length) {
-            movieList[count++] = new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+            movieList[count++] = new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating);
         } else {
             System.out.println("Movie collection is full. Cannot add more movies.");
         }
