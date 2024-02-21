@@ -1,7 +1,7 @@
 
 public class Controller {
     //deklarerer et moviecollection objekt.
-    MovieCollection movieCollection;
+    private MovieCollection movieCollection;
 
 
     public Controller() {
@@ -28,4 +28,13 @@ public class Controller {
         //Vi kan nu kalde disse metoder fra vores Main klasse.
     }
 
+    public boolean isMovieListNotEmpty(){
+        return movieCollection.isMovieListNotEmpty();
+
     }
+
+
+
+
+    }
+
