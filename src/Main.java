@@ -19,7 +19,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         //Opsætter et do - while loop for vores brugermenu.
-        do  {
+        do {
             System.out.println("Welcome to your personal Movie Collection Library. " +
                     "\n Enter '1' if you would like to add movies to your collection. " +
                     "\n Enter '2' if you would like to change the movies in your collection " +

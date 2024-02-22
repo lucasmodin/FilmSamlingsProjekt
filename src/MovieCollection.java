@@ -64,5 +64,22 @@ public class MovieCollection {
         System.out.println("Error! no movie by that title found.");
     }
 
+
+    public void searchTroughArray(){
+
+
+    }
+
+    public boolean isMovieListNotEmpty () {
+        return !movieList.isEmpty();
+    }
+
 }
+
+
+
+
+
+
+
 
