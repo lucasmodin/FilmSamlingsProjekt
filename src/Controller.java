@@ -13,12 +13,12 @@ public class Controller {
         movieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating);
         //I addMovie metoden kalder vi på addMovie metoden i movieCollection klassen. Her giver vi metoden samme parametre som i movieCollection.
     }
-    public void printCollection() {
+    public void printCollection() { 
         movieCollection.printCollection();
         //Igen kalder vi bare på metoden inde i movieCollection klassen.
     }
     public void removeMovie(String title) {
-        removeMovie(title);
+        movieCollection.removeMovie(title);
         //igen kaldt på en metode fra movieCollection klassen
     }
     public void changeMovie(String title, String newTitle, String newDirector, int newYearCreated,

@@ -1,7 +1,6 @@
 //importere ArrayList
 import java.util.ArrayList;
 
-
 public class MovieCollection {
     //deklarerer ArrayList, der tager Movie constructoren, som argumenter.
     private ArrayList<Movie> movieList;
