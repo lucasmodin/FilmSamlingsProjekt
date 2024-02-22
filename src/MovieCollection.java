@@ -40,7 +40,7 @@ public class MovieCollection {
             if (movie.getTitle().equals(title)) {
                 movieList.remove(movie);
                 count--;
-                return; //return statement for at komme ud af metoden når titlen er fundet. Ellers får vi en concurrentModificationException.
+                break; //break statement for at komme ud af for loopet når titlen er fundet. Ellers får vi en concurrentModificationException.
             }
 
         } System.out.println("Movie with title " + title + " was not found in the collection");
@@ -56,16 +56,25 @@ public class MovieCollection {
                 movie.setDirector(newDirector);
                 movie.setYearCreated(newYearCreated);
                 movie.setIsinColor(newIsinColor);
+                movie.setLengthInMinutes(newLengthInMinutes);
                 movie.setGenre(newGenre);
                 movie.setRating(newRating);
-                return; //igen return statement for at komme ud af loopet, ellers får vi concurrentModificationException.
+                break; //igen break statement for at komme ud af loopet, ellers får vi concurrentModificationException.
             }
         }
         System.out.println("Error! no movie by that title found.");
     }
 
 
-    public void searchTroughArray(){
+    public void searchTroughMovieList(String title){
+//metode til at søge igennem vores arraylist. Vi søger mere parameteren titel, og bruger i vores if statement Arraylist.contains samt .tolowercase så vi ikke behøver skrive den præcise titel.
+        for (Movie movie : movieList) {
+            if(movie.getTitle().toLowerCase().contains(title.toLowerCase()) || title.equalsIgnoreCase("all")) {
+                System.out.println(movie.toString());
+            }
+
+        }
+
 
 
     }

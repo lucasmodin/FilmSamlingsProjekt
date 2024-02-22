@@ -1,7 +1,7 @@
 
 
 //OBS! Main klassen er meget rodet. planlægger at rydde op snarest :))
-
+//OBS! der kan være en fejl hvis man prøver at vælge menu punkt 2 eller 3 uden at have indtastet en film. Jeg har ikke tilføjet exceptions endnu.
 //importere scanner
 
 import java.util.Scanner;
@@ -13,13 +13,15 @@ public class Main {
 
         //Tilføjet en navigator og sentinel. Navigatoren bruger vi til at 'navigere' igennem vores program og tager datatypen Int. Sentinel er vores stopklods for tilføjelse af film loops.
         int navigator;
-        int sentinel = 0;
+
 
         //Opretter scanner objekt
         Scanner input = new Scanner(System.in);
 
         //Opsætter et do - while loop for vores brugermenu.
         do {
+            int sentinel = 0;
+
             System.out.println("Welcome to your personal Movie Collection Library. " +
                     "\n Enter '1' if you would like to add movies to your collection. " +
                     "\n Enter '2' if you would like to change the movies in your collection " +
@@ -79,23 +81,57 @@ public class Main {
                 navigator = input.nextInt();
                 input.nextLine(); //dummy scanner for at 'æde' scanner bug
 
-
+                //
                 }else if (navigator == 2) {
 
-                System.out.println("What movie would you like to change?");
-                controller.printCollection();
-                String title = input.nextLine();
+                while (sentinel != -1) {
+                    if (controller.isMovieListNotEmpty()) {
+                        System.out.println("What movie would you like to change?" +
+                                "\n Please enter the title of the movie you would like to edit");
+                        controller.printCollection();
+                        String title = input.nextLine();
+                        System.out.println("You have selected the movie " + title);
+                        System.out.print("Now enter the new movies title: ");
+                        String newTitle = input.nextLine();
+                        System.out.print("Now enter the new movies director: ");
+                        String newDirector = input.nextLine();
+                        System.out.print("Now enter the new movies release year: ");
+                        int newYearReleased = input.nextInt();
+                        input.nextLine();
+                        System.out.print("Now, is the new movie in color or not? true/false: ");
+                        boolean newIsinColor = input.nextBoolean();
+                        System.out.print("Now enter the new movies length in whole minutes: ");
+                        int newMovieLength = input.nextInt();
+                        input.nextLine();
+                        System.out.print("Now enter the new movies genre: ");
+                        String newGenre = input.nextLine();
+                        while (true) {
+                            System.out.println("Now enter the new movies rating between 1 and 10: ");
+                            int newRating = input.nextInt();
+                            if (newRating <= 10 && newRating >= 1) {
+                                controller.changeMovie(title, newTitle, newDirector, newYearReleased, newIsinColor, newMovieLength, newGenre, newRating);
+                                break;
+                            } else {
+                                System.out.println("Error! rating should be between 1 and 10. Please try again");
+                            }
+                        }
+                        System.out.println("Your movie " + title + " has been changed to " + newTitle +
+                                " Type '-1' if your collection is done, or enter 0 to keep the collection");
+                        sentinel = input.nextInt();
+                        input.nextLine();
 
-                    //ikke færdiggjort
+                    }
+                }
 
                 } else if (navigator == 3) {
 
-                System.out.println("");
-
+                    System.out.println("What movie would you like to search for? Enter a title or a letter in the title: ");
+                    String title = input.nextLine();
+                    controller.searchTroughMovieList(title);
 
                 }
 
-                    else if (navigator == 4) {
+             else if (navigator == 4) {
 
                 System.out.println("What movie would you like to remove? " +
                         "\n enter the movies title to remove it from the collection.");

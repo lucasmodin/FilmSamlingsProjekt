@@ -32,6 +32,9 @@ public class Controller {
         return movieCollection.isMovieListNotEmpty();
 
     }
+    public void searchTroughMovieList(String title){
+        movieCollection.searchTroughMovieList(title);
+    }
 
 
 

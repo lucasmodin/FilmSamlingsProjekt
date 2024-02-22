@@ -58,6 +58,9 @@ public class Movie {
     public void setIsinColor(boolean isInColor) {
         this.isInColor = isInColor;
     }
+    public void setLengthInMinutes(int lengthInMinutes){
+        this.lengthInMinutes = lengthInMinutes;
+    }
     public void setGenre(String genre) {
         this.genre = genre;
 
@@ -71,7 +74,7 @@ public class Movie {
         return "Title: " + title +
                 ", Director: " + director +
                 ", Year: " + yearCreated +
-                ", Color: " + (isInColor ? "Yes" : "No") +
+                ", Color: " + (isInColor ? "Yes" : "No") + //ternary operator til if statement.
                 ", Length: " + lengthInMinutes + " minutes" +
                 ", Genre: " + genre +
                 ", Rating " + rating;
