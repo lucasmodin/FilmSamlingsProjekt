@@ -2,53 +2,48 @@
 import java.util.ArrayList;
 
 public class MovieCollection {
-    //deklarerer ArrayList, der tager Movie constructoren, som argumenter.
     private ArrayList<Movie> movieList;
-
     private int count;
-
-
     public MovieCollection() {
-        //I constructoren opretter vi Arraylisten.
+
         this.movieList = new ArrayList<>();
         count = 0;
 
     }
 
-    //i AddMovie metoden giver vi den alle parameterne 'title' osv.
-    // Herunder bruger vi arraylist bibliotekets funktion .add til at tilføje vores parametre som argumenter i Main klassen.
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre, int rating) {
         movieList.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating));
         count++;
-
     }
 
-    //metode til at printe kollektionen. Vi laver et for each loop for at iterere igennem Arraylisten, og hvis 'movie' ikke er lig med 'null', så printer den listen.
-    public void printCollection() {
+
+    public String printCollection() {
+        String result= "";
         for (Movie movie : movieList) {
             if (movie != null) {
-                System.out.println(movie);
+                result += movie.toString() + "\n";
             }
+        }
+        if (!result.isEmpty()) {
+            return result;
+        }else {
+            return "You havent added any movies yet.";
         }
 
     }
-
-    //I removeMovie metoden laver vi et for-each loop til iterere igennem arraylisten. Den er givet parameteren 'title'
-    //Herunder bruger getTitle metoden til at sige, at hvis indtastet titel er lig med titel i listen, så fjern den.
     public void removeMovie(String title) {
         for (Movie movie : movieList) {
             if (movie.getTitle().equals(title)) {
                 movieList.remove(movie);
                 count--;
-                break; //break statement for at komme ud af for loopet når titlen er fundet. Ellers får vi en concurrentModificationException.
+                break;
             }
 
         } System.out.println("Movie with title " + title + " was not found in the collection");
     }
 
 
-//Metode til at ændre en film i listen. Her får den parameterne title, der er den søgte titel, samt alle andre parametre med 'new' foran.
-    //Meningen med dette er, at når brugeren indtaster en titel personen vil ændre, så bruger vi 'set' metoderne til at ændre værdierne i listen.
+
     public void changeMovie (String title, String newTitle, String newDirector, int newYearCreated, boolean newIsinColor, int newLengthInMinutes, String newGenre, int newRating) {
         for (Movie movie : movieList){
             if (movie.getTitle().equals(title)) {
@@ -59,28 +54,31 @@ public class MovieCollection {
                 movie.setLengthInMinutes(newLengthInMinutes);
                 movie.setGenre(newGenre);
                 movie.setRating(newRating);
-                break; //igen break statement for at komme ud af loopet, ellers får vi concurrentModificationException.
-            }
+                break;  }
         }
         System.out.println("Error! no movie by that title found.");
     }
 
 
-    public void searchTroughMovieList(String title){
-//metode til at søge igennem vores arraylist. Vi søger mere parameteren titel, og bruger i vores if statement Arraylist.contains samt .tolowercase så vi ikke behøver skrive den præcise titel.
+    public String searchTroughMovieList(String title){
+     String result = "";
         for (Movie movie : movieList) {
-            if(movie.getTitle().toLowerCase().contains(title.toLowerCase()) || title.equalsIgnoreCase("all")) {
-                System.out.println(movie.toString());
+            if(movie.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                result += movie.toString() + "\n";
+            } else  {
+                return "No movie by title " + title + " found.";
             }
-
+        } if (!result.isEmpty()) {
+            return result;
+        } else {
+            return "You haven't added any movies to your collection";
         }
-
-
-
     }
-
     public boolean isMovieListNotEmpty () {
         return !movieList.isEmpty();
+    }
+    public ArrayList<Movie> getMovieList(){
+        return movieList;
     }
 
 }

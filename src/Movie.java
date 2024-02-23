@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 public class Movie {
     private String title = "";
     private String director = "";
@@ -69,12 +69,12 @@ public class Movie {
         this.rating = rating;
 
     }
-
+@Override
     public String toString() {
         return "Title: " + title +
                 ", Director: " + director +
                 ", Year: " + yearCreated +
-                ", Color: " + (isInColor ? "Yes" : "No") + //ternary operator til if statement.
+                ", Color: " + (isInColor ? "Yes" : "No") + //ternary operator til if-else statement.
                 ", Length: " + lengthInMinutes + " minutes" +
                 ", Genre: " + genre +
                 ", Rating " + rating;
