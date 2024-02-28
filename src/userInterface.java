@@ -34,7 +34,7 @@ public class userInterface {
         } while (navigator != SENTINEL);
     }
 
-    public void addMovie() {
+    private void addMovie() {
         int localNavigator = 0;
         final int SENTINEL = -1;
         while (localNavigator != SENTINEL) {
@@ -85,7 +85,7 @@ public class userInterface {
 
     }
 
-    public void searchTroughMovieList() {
+    private void searchTroughMovieList() {
         int localNavigator = 0;
         final int SENTINEL = -1;
         while (localNavigator != SENTINEL) {
@@ -128,7 +128,7 @@ public class userInterface {
 
     }
 
-    public void changeMovie() {
+    private void changeMovie() {
         if (controller.isMovieListNotEmpty()) {
             System.out.println("What movie would you like to search for? Enter a title or a letter in the title: ");
             String title = input.nextLine();
@@ -138,7 +138,7 @@ public class userInterface {
         }
 
     }
-    public void deleteMovie(){
+    private void deleteMovie(){
         int localNavigator = 0;
         final int SENTINEL = -1;
         while (localNavigator != SENTINEL) {

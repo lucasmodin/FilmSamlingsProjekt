@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FilmSamlingsProjekt:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FilmSamlingsProjekt_jar</output-path>
+    <root id="archive" name="FilmSamlingsProjekt.jar">
+      <element id="module-output" name="FilmSamlingsProjekt" />
+    </root>
+  </artifact>
+</component>
