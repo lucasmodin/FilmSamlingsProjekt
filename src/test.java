@@ -2,7 +2,7 @@
            //Work in progress!!!
 import java.util.Scanner;
 
-public class test {
+public class test {/*
     public static void main(String[] args) {
         Controller controller = new Controller();
         Scanner input = new Scanner(System.in);
@@ -131,4 +131,5 @@ public class test {
         } while (navigator != -1);
         input.close();
     }
+    */
 }

@@ -77,7 +77,8 @@ public class Movie {
                 ", Color: " + (isInColor ? "Yes" : "No") + //ternary operator til if-else statement.
                 ", Length: " + lengthInMinutes + " minutes" +
                 ", Genre: " + genre +
-                ", Rating " + rating;
+                ", Rating " + rating +
+                "\n";
     }
 
 }

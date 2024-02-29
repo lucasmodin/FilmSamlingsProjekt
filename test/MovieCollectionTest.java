@@ -48,4 +48,21 @@ class MovieCollectionTest {
         assertEquals(expectedList.toString(), actualList.toString());
 
     }
+
+    @Test
+    void deleteMovie() {
+
+        //Arrange
+        ArrayList<Movie> movieArrayList = new ArrayList<>();
+        MovieCollection filmListe = new MovieCollection();
+        filmListe.addMovie("Die Hard", "Michael Bay", 1999, true, 92, "Action", 9);
+
+        //Act
+        filmListe.removeMovie("Die Hard");
+        int actualSize = filmListe.getMovieList().size();
+        int expectedSize = 0;
+
+        //Assert
+        assertEquals(expectedSize, actualSize);
+    }
 }
