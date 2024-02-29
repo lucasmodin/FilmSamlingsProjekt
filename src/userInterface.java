@@ -35,9 +35,7 @@ public class userInterface {
     }
 
     private void addMovie() {
-        int localNavigator = 0;
-        final int SENTINEL = -1;
-        while (localNavigator != SENTINEL) {
+        while (true) {
             System.out.println("Enter details for Movie: ");
 
             System.out.print("Title: ");
@@ -69,30 +67,30 @@ public class userInterface {
 
             System.out.println("Enter the rating between 1 and 10: ");
             int rating = input.nextInt();
-            controller.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating);
-            System.out.println("Your movie has been added - Type '-1' if your collection is done, or enter 0 to add more to the collection");
-
-
-            System.out.println("Your collection now looks like this");
-
-            System.out.println(controller.printCollection());
-
-            System.out.println("You have now added your desired movies. Enter '-1' if you would like to go back to the main menu");
-
-            localNavigator = input.nextInt();
             input.nextLine();
+
+            controller.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating);
+            System.out.println("Your movie has been added");
+
+            System.out.println("Would you like to return to the main menu? if yes - enter 'yes': " +
+                    "Enter 'no' to keep staying in the menu choice");
+            String userChoice = input.nextLine();
+
+            if (userChoice.equalsIgnoreCase("yes")) {
+                break;
+            }
+
         }
 
     }
 
-    private void searchTroughMovieList() {
-        int localNavigator = 0;
-        final int SENTINEL = -1;
-        while (localNavigator != SENTINEL) {
+    private void changeMovie() {
+
+        while (true) {
             if (controller.isMovieListNotEmpty()) {
                 System.out.println("What movie would you like to change?" +
                         "\n Please enter the title of the movie you would like to edit");
-                controller.printCollection();
+                System.out.println(controller.printCollection());
                 String title = input.nextLine();
                 System.out.println("You have selected the movie " + title);
                 System.out.print("Now enter the new movies title: ");
@@ -109,6 +107,7 @@ public class userInterface {
                 input.nextLine();
                 System.out.print("Now enter the new movies genre: ");
                 String newGenre = input.nextLine();
+
                 while (true) {
                     System.out.println("Now enter the new movies rating between 1 and 10: ");
                     int newRating = input.nextInt();
@@ -119,50 +118,77 @@ public class userInterface {
                         System.out.println("Error! rating should be between 1 and 10. Please try again");
                     }
                 }
-                System.out.println("Your movie " + title + " has been changed to " + newTitle +
-                        " Type '-1' if your collection is done, or enter 0 to keep the collection");
-                localNavigator = input.nextInt();
-                input.nextLine();
+                System.out.println("Your movie " + title + " has been changed to " + newTitle);
+
+            }
+            System.out.println("Would you like to return to the main menu? if yes - enter 'yes': " +
+                    "Enter 'no' to keep staying in the menu choice");
+            String userChoice = input.nextLine();
+
+            if (userChoice.equalsIgnoreCase("yes")) {
+                break;
+            }
+        }
+    }
+
+        private void searchTroughMovieList () {
+            if (controller.isMovieListNotEmpty()) {
+                System.out.println("What movie would you like to search for? Enter a title or a letter in the title: ");
+                String title = input.nextLine();
+                System.out.println(controller.searchTroughMovieList(title).toString());
+            } else {
+                System.out.println("Error, your movie list is empty. Please add some movies.");
+            }
+
+        }
+        private void deleteMovie() {
+
+            while (true) {
+                System.out.println("What movie would you like to remove? " +
+                        "\n enter the movies title to remove it from the collection.");
+
+                System.out.println(controller.printCollection());
+                ;
+                String remove = input.nextLine();
+
+                controller.removeMovie(remove);
+
+                System.out.println(controller.printCollection());
+                System.out.println("You have now removed the movie " + remove + " from your collection ");
+                System.out.println("Would you like to return to the main menu? if yes - enter 'yes': " +
+                        "Enter 'no' to keep staying in the menu choice");
+                String userChoice = input.nextLine();
+                if (userChoice.equalsIgnoreCase("yes")) {
+                    break;
+                }
             }
         }
 
-    }
+    /*public boolean returnToMainMenu() {
 
-    private void changeMovie() {
-        if (controller.isMovieListNotEmpty()) {
-            System.out.println("What movie would you like to search for? Enter a title or a letter in the title: ");
-            String title = input.nextLine();
-            System.out.println(controller.searchTroughMovieList(title));
+        String userInput;
+
+        System.out.println("Would you like to return to the main menu? if yes - enter 'yes': " +
+                "Enter 'no' to keep staying in the menu choice");
+        userInput = input.next();
+
+        if (userInput.equalsIgnoreCase("yes")) {
+            System.out.println("Returning to main menu...");
+            return true;
+
+        } else if (userInput.equalsIgnoreCase("no")) {
+            System.out.println("Continuing... ");
+            return false;
+
         } else {
-            System.out.println("Error, your movie list is empty. Please add some movies.");
-        }
+            System.out.println("Error - input invalid. please try again");
+        } return returnToMainMenu();
+    }*/
+
 
     }
-    private void deleteMovie(){
-        int localNavigator = 0;
-        final int SENTINEL = -1;
-        while (localNavigator != SENTINEL) {
-
-            System.out.println("What movie would you like to remove? " +
-                    "\n enter the movies title to remove it from the collection.");
-
-            System.out.println(controller.printCollection());
-            ;
-            String remove = input.nextLine();
-
-            controller.removeMovie(remove);
-
-            System.out.println(controller.printCollection());
 
 
-            System.out.println("You have now removed the movie " + remove + " from your collection " +
-                    "\n enter '4' if you would like to remove another movie, or enter '0' to get back to the main menu");
-            localNavigator = input.nextInt();
-            input.nextLine();
-
-        }
-    }
-}
 
 
 

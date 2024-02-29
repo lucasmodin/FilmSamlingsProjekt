@@ -1,4 +1,5 @@
 //importere ArrayList
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MovieCollection {
@@ -33,7 +34,7 @@ public class MovieCollection {
     }
     public void removeMovie(String title) {
         for (Movie movie : movieList) {
-            if (movie.getTitle().equals(title)) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
                 movieList.remove(movie);
                 count--;
                 break;
@@ -46,7 +47,7 @@ public class MovieCollection {
 
     public void changeMovie (String title, String newTitle, String newDirector, int newYearCreated, boolean newIsinColor, int newLengthInMinutes, String newGenre, int newRating) {
         for (Movie movie : movieList){
-            if (movie.getTitle().equals(title)) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
                 movie.setTitle(newTitle);
                 movie.setDirector(newDirector);
                 movie.setYearCreated(newYearCreated);
@@ -55,25 +56,22 @@ public class MovieCollection {
                 movie.setGenre(newGenre);
                 movie.setRating(newRating);
                 break;  }
+            else {
+                System.out.println("Error! no movie by that title found.");
+            }
         }
-        System.out.println("Error! no movie by that title found.");
     }
 
 
-    public String searchTroughMovieList(String title){
-     String result = "";
+    public ArrayList<Movie> searchTroughMovieList(String title){
+     ArrayList<Movie> result = new ArrayList<>();
         for (Movie movie : movieList) {
             if(movie.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                result += movie.toString() + "\n";
-            } else  {
-                return "No movie by title " + title + " found.";
+                result.add(movie);
             }
-        } if (!result.isEmpty()) {
-            return result;
-        } else {
-            return "You haven't added any movies to your collection";
-        }
+        } return result;
     }
+
     public boolean isMovieListNotEmpty () {
         return !movieList.isEmpty();
     }

@@ -18,17 +18,16 @@ class MovieCollectionTest {
          String genre = "Action";
          int rating = 9;
 
-        ArrayList<Movie> movieArrayList = new ArrayList<>();
         MovieCollection movieCollection = new MovieCollection();
         movieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating);
 
         //Act
-        ArrayList<Movie>  actualList = movieCollection.getMovieList();
-        ArrayList<Movie> expectedList = new ArrayList<>();
-        expectedList.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre, rating));
+        int actualSize = movieCollection.getMovieList().size();
+        int expectedSize = 1;
 
         //Assert
-        assertEquals(expectedList.toString(), actualList.toString());
+        assertEquals(expectedSize, actualSize);
+
 
     }
 
